@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-app</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+     <form id="quizForm">
+        <h1>Quiz-app</h1>
+            <fieldset>
+                <legend id="question-number">Question number</legend>
+                <label for="question-text">Question:
+                <input id="question" type="text" placeholder="(max 140 characters)" maxlength="140" required> <br>
+                a. <input class="correctAnswer" type="text" id="option1" name="question1" value="" required> <br>
+                b. <input class="wrongAnswer" type="text" id="option2" name="question1" value="" required> <br>
+                c. <input class="wrongAnswer" type="text" id="option3" name="question1" value="" required> <br>
+                d. <input class="wrongAnswer" type="text" id="option4" name="question1" value="" required> <br>
+            </fieldset>
+
+            <button type="button">Save</button>
+            <button type="button" onclick="">
+                Randomize options
+              </button>
+            <input id="submitBtn" type="submit" value="Submit">
+        </form>
+    <script src="./script.js"></script>
+</body>
+</html>
