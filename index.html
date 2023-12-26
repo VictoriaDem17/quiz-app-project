@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-app</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+     <form id="quizForm">
+        <h1>Quiz-app</h1>
+        <div id="formDiv">
+            <div class="question-container">
+                <label><b>Question:</b></label>
+                <input 
+                class="question-input" 
+                type="text" 
+                placeholder="Enter the question (max 140 characters), and mark the correct option" 
+                maxlength="140" 
+                required>
+            <div class="option-container">
+                <div class="option">
+                    <label>Option1:</label> 
+                    <input type="text" class="option-input" required> 
+                    <input type="radio" class="correct-input" value="option1" name="answer">
+                </div>
+                <div class="option">
+                    <label>Option2:</label> 
+                    <input type="text" class="option-input" required> 
+                    <input type="radio" class="correct-input" value="option2" name="answer">
+                </div>
+                <div class="option">
+                    <label>Option3:</label> 
+                    <input type="text" class="option-input" required> 
+                    <input type="radio" class="correct-input" value="option3" name="answer">
+                </div>
+                <div class="option">
+                    <label>Option4:</label> 
+                    <input type="text" class="option-input" required> 
+                    <input type="radio" class="correct-input" value="option4" name="answer">
+                </div>
+            </div>    
+        </div>
+    <button type="button" onclick="addQuestion()">Add Question</button> 
+    <div id="questionList"></div>
+</form>
+<button id="next-side" type="button" onclick="openNextForm()">Next step</button>
+    <script src="./script.js"></script>
+</body>
+</html>
