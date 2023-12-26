@@ -12,6 +12,7 @@ body {
 }
 
 #quizForm {
+    position: relative;
     background: #fff;
     width: 100%;
     max-width: 600px;
@@ -73,4 +74,23 @@ button:hover {
 ul {
     list-style-type: none;
     padding: 10px;
+}
+
+#next-side {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    font-size: 16px;
+    background-color: #1e80c1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  #next-side:hover {
+    background-color: #78aed3;
   }
