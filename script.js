@@ -2,7 +2,7 @@ const questionsArray = [];
 
 function addQuestion() {
   const question = {
-      questionText: document.querySelector('.question-input').value,
+      questionText: document.querySelector('#question-input').value,
       options: [],
       correctOptionIndex: null,
       correctOptionHighlighted: false,
@@ -62,7 +62,7 @@ function renderQuestions() {
 }
 
 function clearForm() {
-  document.querySelector('.question-input').value = '';
+  document.querySelector('#question-input').value = '';
   const optionInputs = document.querySelectorAll('.option-input');
   const correctInputs = document.querySelectorAll('.correct-input');
 
@@ -74,12 +74,7 @@ function clearForm() {
   });
 }
 
-//JS2-W2-3
-//MyQuestions
-/*
-..some function openNextForm(), onclick button "Next side" will open new windows with empty formDiv and h1,
-and shows imput for searching questions by content and new button "Search"..
-
+//My own questions array for checking if different functions work
 const quizData = [
     {
     question: "Who is the creator of JavaScript?",
@@ -128,23 +123,59 @@ const quizData = [
   },
 ];
 
-function filterQuestions(searchContent) {
-    const filteredQuestions = quizData.filter((question) =>
-      question.question.toLowerCase().includes(searchContent.toLowerCase())
-    );
-    
+function filterQuestions() {
+  const contentInput = document.getElementById("content-input").value;
+  const filteredQuestions = quizData.filter((question) =>
+    question.question.toLowerCase().includes(contentInput.toLowerCase())
+  );
+
+  const filteredQuestionsDiv = document.querySelector(".filteredQuestions");
+  filteredQuestionsDiv.innerHTML = "";
+
+  if (filteredQuestions.length === 0) {
+    const noResultMessage = document.createElement("p");
+    noResultMessage.textContent = "No questions found";
+    filteredQuestionsDiv.appendChild(noResultMessage);
+  } else {
     filteredQuestions.forEach((question) => {
-    const optionsHTML = question.options
-        .map(
-        (option) =>
-        `<div class="option"><input type="radio" name="${question.question}" value="${option.text}"> ${option.text}</div>`
-        )
-        .join("");
+      const questionElement = document.createElement("div");
+      questionElement.classList.add("question");
+      
+      const questionText = document.createElement("p");
+      questionText.textContent = question.question;
+      questionText.style.fontWeight = "bold";
+      questionElement.appendChild(questionText);
+      questionElement.style.marginTop = "10px";
 
-    const questionHTML = 
-    `<div class="question"><h3>${question.question}</h3>${optionsHTML}</div>`;
+      const optionsElement = document.createElement("ol");
+      optionsElement.classList.add("options");
+      optionsElement.style.padding = "10px";
 
-    document.getElementById("quiz").innerHTML += questionHTML;
-});
+      question.options.forEach((option) => {
+        const optionElement = document.createElement("li");
+        optionElement.textContent = option.text;
+        optionsElement.appendChild(optionElement);
+      });
+
+      questionElement.appendChild(optionsElement);
+      filteredQuestionsDiv.appendChild(questionElement);
+    });
+  }
 }
-*/
+
+function startQuiz() {
+  const player1 = document.getElementById('name-input1').value;
+  const player2 = document.getElementById('name-input2').value;
+  
+  const playersList = document.getElementById('playersList');
+  playersList.innerHTML = 
+  '<div>' + player1 + '<span id="scorePlayer1">0</span><button onclick="addScore(1, true)">Correct</button><button onclick="addScore(1, false)">Wrong</button></div>' +
+  '<div>' + player2 + '<span id="scorePlayer2">0</span><button onclick="addScore(2, true)">Correct</button><button onclick="addScore(2, false)">Wrong</button></div>';
+}
+
+function addScore(playerNumber, isCorrect) {
+  let scoreElement = document.getElementById('scorePlayer' + playerNumber);
+  let score = parseInt(scoreElement.innerHTML);
+  score += isCorrect ? 1 : -1;
+  scoreElement.innerHTML = score;
+}

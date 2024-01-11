@@ -11,32 +11,32 @@
         <h1>Quiz-app</h1>
         <div id="formDiv">
             <div class="question-container">
-                <label><b>Question:</b></label>
+                <label for="question-input"><b>Question:</b></label>
                 <input 
-                class="question-input" 
+                id="question-input" 
                 type="text" 
                 placeholder="Enter the question (max 140 characters), and mark the correct option" 
                 maxlength="140" 
                 required>
             <div class="option-container">
                 <div class="option">
-                    <label>Option1:</label> 
-                    <input type="text" class="option-input" required> 
+                    <label for="option1">Option1:</label> 
+                    <input type="text" id="option1" class="option-input" required> 
                     <input type="radio" class="correct-input" value="option1" name="answer">
                 </div>
                 <div class="option">
-                    <label>Option2:</label> 
-                    <input type="text" class="option-input" required> 
+                    <label for="option2">Option2:</label> 
+                    <input type="text" id="option2" class="option-input" required> 
                     <input type="radio" class="correct-input" value="option2" name="answer">
                 </div>
                 <div class="option">
-                    <label>Option3:</label> 
-                    <input type="text" class="option-input" required> 
+                    <label for="option3">Option3:</label> 
+                    <input type="text" id="option3" class="option-input" required> 
                     <input type="radio" class="correct-input" value="option3" name="answer">
                 </div>
                 <div class="option">
-                    <label>Option4:</label> 
-                    <input type="text" class="option-input" required> 
+                    <label for="option4">Option4:</label> 
+                    <input type="text" id="option4" class="option-input" required> 
                     <input type="radio" class="correct-input" value="option4" name="answer">
                 </div>
             </div>    
@@ -44,7 +44,34 @@
     <button type="button" onclick="addQuestion()">Add Question</button> 
     <div id="questionList"></div>
 </form>
-<button id="next-side" type="button" onclick="openNextForm()">Next step</button>
+<div class="filterQuestions">
+    <label for="content-input"><b>Filter questions by searching of content:</b></label><br> 
+    <input type="text" id="content-input" required> 
+    <button type="button" onclick="filterQuestions()">Search a question</button>
+    <div class="filteredQuestions"></div>
+</div>
+<div class="players-container">
+    <div class="username">
+        <label for="name-input1"><b>Player_1</b></label>
+        <input 
+        id="name-input1" 
+        type="text" 
+        placeholder="Enter the name for player_1" 
+        required>
+    </div>
+    <div class="username">
+        <label for="name-input2"><b>Player_2</b></label>
+        <input 
+        id="name-input2" 
+        type="text" 
+        placeholder="Enter the name for player_2" 
+        required>
+    </div>
+    <button type="button" onclick="startQuiz()">Start quiz</button>
+    <div id="playersList"></div>
+</div>
+
+
     <script src="./script.js"></script>
 </body>
 </html>
