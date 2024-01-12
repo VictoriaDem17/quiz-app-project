@@ -97,10 +97,10 @@ const quizData = [
   {
     question: "Which JavaScript statement is incorrect?",
     options: [
-      { text: '"b" + "a" + + "a" + "a" //output "baNaNa"', isCorrect: false },
-      { text: "Number.MIN_VALUE > 0 //true", isCorrect: true },
+      { text: "document.write(('b' + 'a' + + 'a' + 'a').toLowerCase())", isCorrect: false },
+      { text: "Number.MIN_VALUE > 0 //true", isCorrect: false },
       { text: "functions can execute themselves", isCorrect: false },
-      { text: "undefined never can be defined", isCorrect: false },
+      { text: "undefined never can be defined", isCorrect: true },
     ],
   },
   {
@@ -180,7 +180,16 @@ function addScore(playerNumber, isCorrect) {
   scoreElement.innerHTML = score;
 }
 
-function sortQuestionsAb() {
+async function getData() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/VictoriaDem17/victoriadem17.github.io/main/data.json"
+  );
+  const myData = await response.json();
+
+  sortQuestionsAb(myData);
+}
+
+const sortQuestionsAb = (data) => {
   quizData.sort((a, b) => a.question.localeCompare(b.question));
   const container = document.getElementById('questionsListAb');
   container.innerHTML = '';
@@ -192,7 +201,7 @@ function sortQuestionsAb() {
     listItem.innerText = `${index + 1}. ${quiz.question}`;
     container.appendChild(listItem);
   });
-}
+};
 
 function sortQuestionsRnd() {
   const list = document.getElementById('questionsListRnd');
