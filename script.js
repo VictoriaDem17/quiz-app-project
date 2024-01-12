@@ -169,8 +169,8 @@ function startQuiz() {
   
   const playersList = document.getElementById('playersList');
   playersList.innerHTML = 
-  '<div>' + player1 + '<span id="scorePlayer1">0</span><button onclick="addScore(1, true)">Correct</button><button onclick="addScore(1, false)">Wrong</button></div>' +
-  '<div>' + player2 + '<span id="scorePlayer2">0</span><button onclick="addScore(2, true)">Correct</button><button onclick="addScore(2, false)">Wrong</button></div>';
+  '<div>' + player1 + '<span id="scorePlayer1">0</span><button type="button" onclick="addScore(1, true)">Correct</button><button type="button" onclick="addScore(1, false)">Wrong</button></div>' +
+  '<div>' + player2 + '<span id="scorePlayer2">0</span><button type="button" onclick="addScore(2, true)">Correct</button><button type="button" onclick="addScore(2, false)">Wrong</button></div>';
 }
 
 function addScore(playerNumber, isCorrect) {
@@ -178,4 +178,32 @@ function addScore(playerNumber, isCorrect) {
   let score = parseInt(scoreElement.innerHTML);
   score += isCorrect ? 1 : -1;
   scoreElement.innerHTML = score;
+}
+
+function sortQuestionsAb() {
+  quizData.sort((a, b) => a.question.localeCompare(b.question));
+  const container = document.getElementById('questionsListAb');
+  container.innerHTML = '';
+
+  quizData.forEach((quiz, index) => {
+    const listItem = document.createElement('li');
+    listItem.style.padding = '5px';
+    listItem.style.display ='block';
+    listItem.innerText = `${index + 1}. ${quiz.question}`;
+    container.appendChild(listItem);
+  });
+}
+
+function sortQuestionsRnd() {
+  const list = document.getElementById('questionsListRnd');
+  const shuffledData = quizData.sort(() => Math.random() - 0.5);
+  list.innerHTML = '';
+
+  shuffledData.forEach(data => {
+    const listItem = document.createElement('li');
+    listItem.style.padding = '5px';
+    listItem.style.display = 'block';
+    listItem.innerText = data.question;
+    list.appendChild(listItem);
+  });
 }
