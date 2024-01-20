@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,800;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ececec;
+}
+
+#quizForm {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  max-width: 600px;
+  margin: 100px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#question-input,
+#content-input,
+#name-input1,
+#name-input2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.option-input {
+  display: block;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+button {
+  display: flex;
+  background-color: #1e80c1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #78aed3;
+}
+
+#questionList {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.username {
+  margin-bottom: 10px;
+}
+
+.players-container div span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.players-container div button {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#playersList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#sortAb {
+  margin: 10px auto;
+}
